@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'movies/domain/entites/movie.dart';
+
 void main() {
+
   runApp(const MyApp());
 }
 
