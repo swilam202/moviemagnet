@@ -6,49 +6,49 @@ import 'package:moviemagnet/core/network/api%20constants.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 abstract class BaseMovieReomteDataSource {
-  Future<Either<Failure, List<MovieModel>>> getNowPlayingMovies();
-  Future<Either<Failure, List<MovieModel>>> getPopularMovies();
-  Future<Either<Failure, List<MovieModel>>> getTopRatedMovies();
+  Future<List<MovieModel>> getNowPlayingMovies();
+  Future<List<MovieModel>> getPopularMovies();
+  Future<List<MovieModel>> getTopRatedMovies();
 }
 
 class MovieReomteDataSource extends BaseMovieReomteDataSource {
   Dio dio = Dio();
   @override
-  Future<Either<Failure, List<MovieModel>>> getNowPlayingMovies() async {
+  Future< List<MovieModel>> getNowPlayingMovies() async {
     Response response = await dio.get(APIConstants.nowPlayingMoviesLink);
     List<MovieModel> movies = response.data['results']
         .map((element) => MovieModel.fromJson(element))
         .toList();
     if (response.statusCode == 200) {
-      return Right(movies);
+      return movies;
     } else {
-      throw Left(ServerException(response.data));
+      throw ServerException(response.data);
     }
   }
 
   @override
-  Future<Either<Failure, List<MovieModel>>> getPopularMovies() async {
-    Response response = await dio.get(APIConstants.popularMoviesLink);
+  Future<List<MovieModel>> getPopularMovies() async {
+Response response = await dio.get(APIConstants.popularMoviesLink);
     List<MovieModel> movies = response.data['results']
         .map((element) => MovieModel.fromJson(element))
         .toList();
     if (response.statusCode == 200) {
-      return Right(movies);
+      return movies;
     } else {
-      throw Left(ServerException(response.data));
+      throw ServerException(response.data);
     }
   }
 
   @override
-  Future<Either<Failure, List<MovieModel>>> getTopRatedMovies() async {
-    Response response = await dio.get(APIConstants.topRatedMoviesLink);
+  Future<List<MovieModel>> getTopRatedMovies() async {
+   Response response = await dio.get(APIConstants.topRatedMoviesLink);
     List<MovieModel> movies = response.data['results']
         .map((element) => MovieModel.fromJson(element))
         .toList();
     if (response.statusCode == 200) {
-      return Right(movies);
+      return movies;
     } else {
-      throw Left(ServerException(response.data));
+      throw ServerException(response.data);
     }
   }
 }
