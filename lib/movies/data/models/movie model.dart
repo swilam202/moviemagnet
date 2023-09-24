@@ -8,7 +8,7 @@ class MovieModel extends Movie {
     required super.ganderIds,
     required super.overview,
     required super.title,
-    required super.voteAvg,
+    required super.voteAverage,
     required super.releaseDate,
   });
 
@@ -19,7 +19,7 @@ class MovieModel extends Movie {
       ganderIds: json['genre_ids'],
       overview: json['overview'],
       title: json['title'],
-      voteAvg: json['vote_average'],
+      voteAverage: json['vote_average'],
       releaseDate: json['release_date'],
     );
   }

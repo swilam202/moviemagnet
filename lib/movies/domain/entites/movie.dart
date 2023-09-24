@@ -1,7 +1,7 @@
 class Movie {
   final int id;
   final String title;
-  final num voteAvg;
+  final num voteAverage;
   final List<int> ganderIds;
   final String backdropPath;
   final String overview;
@@ -13,7 +13,7 @@ class Movie {
     required this.ganderIds,
     required this.overview,
     required this.title,
-    required this.voteAvg,
+    required this.voteAverage,
     required this.releaseDate,
   });
 
@@ -23,7 +23,7 @@ class Movie {
       other is Movie &&
           id == other.id &&
           title == other.title &&
-          voteAvg == other.voteAvg &&
+          voteAverage == other.voteAverage &&
           ganderIds == other.ganderIds &&
           backdropPath == other.backdropPath &&
           releaseDate == other.releaseDate &&
@@ -33,7 +33,7 @@ class Movie {
   int get hashCode =>
       id.hashCode ^
       title.hashCode ^
-      voteAvg.hashCode ^
+      voteAverage.hashCode ^
       ganderIds.hashCode ^
       backdropPath.hashCode ^
       releaseDate.hashCode ^
