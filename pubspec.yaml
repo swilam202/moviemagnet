@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   dartz: ^0.10.1
+  dio: ^5.3.3
   flutter:
     sdk: flutter
 
