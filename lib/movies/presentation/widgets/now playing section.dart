@@ -29,7 +29,14 @@ class NowPlayingSection extends StatelessWidget {
               );
             },
             blendMode: BlendMode.dstIn,
-            child: Padding(
+            child: Image.network(
+                    'https://image.tmdb.org/t/p/w500/tmU7GeKVybMWFButWEGl2M4GeiP.jpg',
+                    fit: BoxFit.fill,
+                    height: double.infinity,
+                  ),
+                  
+            ),
+            Padding(
               padding: const EdgeInsets.all(20.0),
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -51,7 +58,7 @@ class NowPlayingSection extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+   
         ],
       ),
     );
