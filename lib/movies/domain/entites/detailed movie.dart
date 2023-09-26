@@ -1,4 +1,4 @@
-class DetailedMovie {
+class Movie {
   final int id;
   final String title;
   final num voteAverage;
@@ -7,7 +7,7 @@ class DetailedMovie {
   final String overview;
   final String releaseDate;
 
-  const DetailedMovie({
+  const Movie({
     required this.id,
     required this.backdropPath,
     required this.ganderIds,
@@ -20,7 +20,7 @@ class DetailedMovie {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DetailedMovie &&
+      other is Movie &&
           id == other.id &&
           title == other.title &&
           voteAverage == other.voteAverage &&
