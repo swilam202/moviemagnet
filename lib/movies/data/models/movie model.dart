@@ -1,5 +1,5 @@
 
-import 'package:moviemagnet/movies/domain/entites/movie.dart';
+import 'package:moviemagnet/movies/domain/entites/detailed%20movie.dart';
 
 class MovieModel extends Movie {
   MovieModel({

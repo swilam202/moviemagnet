@@ -16,10 +16,9 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
   @override
   Future< List<MovieModel>> getNowPlayingMovies() async {
     Response response = await dio.get(APIConstants.nowPlayingMoviesLink);
-    List<MovieModel> movies = response.data['results']
-        .map((element) => MovieModel.fromJson(element))
-        .toList();
+   
     if (response.statusCode == 200) {
+       List<MovieModel> movies = List.from((response.data['results'] as List).map((e)=>MovieModel.fromJson(e)));
       return movies;
     } else {
       throw ServerException(response.data);
@@ -29,10 +28,9 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
 Response response = await dio.get(APIConstants.popularMoviesLink);
-    List<MovieModel> movies = response.data['results']
-        .map((element) => MovieModel.fromJson(element))
-        .toList();
+    
     if (response.statusCode == 200) {
+      List<MovieModel> movies = List.from((response.data['results'] as List).map((e)=>MovieModel.fromJson(e)));
       return movies;
     } else {
       throw ServerException(response.data);
@@ -42,10 +40,9 @@ Response response = await dio.get(APIConstants.popularMoviesLink);
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
    Response response = await dio.get(APIConstants.topRatedMoviesLink);
-    List<MovieModel> movies = response.data['results']
-        .map((element) => MovieModel.fromJson(element))
-        .toList();
+   print(response.data);
     if (response.statusCode == 200) {
+          List<MovieModel> movies = List.from((response.data['results'] as List).map((e)=>MovieModel.fromJson(e)));
       return movies;
     } else {
       throw ServerException(response.data);
