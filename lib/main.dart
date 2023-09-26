@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'movies/presentation/pages/home page.dart';
 import 'movies/presentation/pages/splash page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MovieMagnet extends StatelessWidget {
         scaffoldBackgroundColor: const Color.fromARGB(96, 72, 71, 71),
         brightness: Brightness.dark,
       ),
-      home: const SplashPage(),
+      home: const HomePage(),
     );
   }
 }
