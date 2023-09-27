@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moviemagnet/core/network/api%20constants.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
+import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20list%20view%20item.dart';
 
 class NowPlayingSection extends StatelessWidget {
   const NowPlayingSection({super.key, required this.movies});
@@ -27,7 +28,7 @@ class NowPlayingSection extends StatelessWidget {
                   Colors.black,
                   Colors.transparent,
                 ],
-                stops: [0, 0.3, 0.4, 1],
+                stops: [0, 0.2, 0.4, 1],
               ).createShader(
                 Rect.fromLTRB(0, 0, rect.width, rect.height),
               );
@@ -39,17 +40,8 @@ class NowPlayingSection extends StatelessWidget {
                 autoPlay: true,
               ),
               items: movies.map((e) {
-                return GestureDetector(
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: Image.network(
-                      APIConstants.getImageLink(e.backdropPath),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                );
-              }).toList(),
+              return  NowPlayingListViewItem(movie: e);
+                  }).toList(),
             ),
           ),
           Padding(
@@ -62,6 +54,7 @@ class NowPlayingSection extends StatelessWidget {
                   const Icon(
                     Icons.circle,
                     color: Colors.red,
+                    size: 15,
                   ),
                   Text(
                     '  Now Playing',

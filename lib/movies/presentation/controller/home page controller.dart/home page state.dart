@@ -2,21 +2,21 @@ import 'package:moviemagnet/movies/domain/entites/detailed%20movie.dart';
 
 import '../../../data/models/movie model.dart';
 
-abstract class HomePageState {}
+abstract class NowPlayingState {}
 
-class HomePageInitialState extends HomePageState {}
+class NowPlayingInitialState extends NowPlayingState {}
 
-class HomePageLoadingState extends HomePageState {}
+class NowPlayingLoadingState extends NowPlayingState {}
 
-class HomePageFailureState extends HomePageState {
+class NowPlayingFailureState extends NowPlayingState {
   final String errorMessage;
-  HomePageFailureState({required this.errorMessage});
+  NowPlayingFailureState({required this.errorMessage});
 }
 
-class HomePageSuccessState extends HomePageState {
+class NowPlayingSuccessState extends NowPlayingState {
   final List<MovieModel> nowPlayingMovies;
 
-  HomePageSuccessState({
+  NowPlayingSuccessState({
     required this.nowPlayingMovies,
 
   });

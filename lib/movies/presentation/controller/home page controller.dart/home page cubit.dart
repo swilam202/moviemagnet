@@ -8,29 +8,22 @@ import 'package:moviemagnet/movies/presentation/controller/home%20page%20control
 import '../../../../core/error/failures.dart';
 import '../../../data/models/movie model.dart';
 
-class HomePageCubit extends Cubit<HomePageState> {
-  //GetPopularMovies getPopularMovies;
+class NowPlayingCubit extends Cubit<NowPlayingState> {
   GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
-  //GetTopRatedMovies getTopRatedMovies;
-  HomePageCubit(
+
+  NowPlayingCubit(
     this.getNowPlayingMoviesUseCase,
-    //this.getPopularMovies,
-    //this.getTopRatedMovies,
-  ) : super(HomePageInitialState());
+  ) : super(NowPlayingInitialState());
 
-  getMovie() async {
-
-    emit(HomePageLoadingState());
+  getMovies() async {
+    emit(NowPlayingLoadingState());
     Either<Failure, List<MovieModel>> nowPlaying =
         await getNowPlayingMoviesUseCase.excute();
 
-
     nowPlaying.fold((l) {
-      emit(HomePageFailureState(errorMessage: l.message));
+      emit(NowPlayingFailureState(errorMessage: l.message));
     }, (r) {
-      emit(HomePageSuccessState(nowPlayingMovies: r));
-
+      emit(NowPlayingSuccessState(nowPlayingMovies: r));
     });
-
   }
 }

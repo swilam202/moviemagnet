@@ -11,38 +11,38 @@ import 'package:moviemagnet/movies/presentation/controller/home%20page%20control
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view%20item.dart';
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view.dart';
 import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20section.dart';
+import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20shimmer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
-      return  Scaffold(
+    return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
-            ElevatedButton(onPressed: ()async{
-              await BlocProvider.of<HomePageCubit>(context).getMovie();
-            }, child: Text('Press')),
-             BlocBuilder<HomePageCubit,HomePageState>(
-              builder: (context,state){
-                if(state is HomePageSuccessState){
-                  return  NowPlayingSection(movies: state.nowPlayingMovies);
-                }
-                else if(state is HomePageFailureState){
-                  return Center(child: Text(state.errorMessage),);
-                }
-                else{
-                  return Center(child: CircularProgressIndicator(),);
-                }
-
+            ElevatedButton(
+              onPressed: () async {
+                await BlocProvider.of<NowPlayingCubit>(context).getMovies();
               },
-
+              child: Text('Press'),
             ),
-             
+            BlocBuilder<NowPlayingCubit, NowPlayingState>(
+              builder: (context, state) {
+                if (state is NowPlayingSuccessState) {
+                  return NowPlayingSection(movies: state.nowPlayingMovies);
+                } else if (state is NowPlayingFailureState) {
+                  return Center(
+                    child: Text(state.errorMessage),
+                  );
+                } else {
+                  return const NowPlayingShimmer();
+                }
+              },
+            ),
             const SizedBox(
               height: 40,
             ),
@@ -78,22 +78,22 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            BlocBuilder<HomePageCubit,HomePageState>(
-              builder: (context,state){
-                if(state is HomePageSuccessState){
-                  return  HomePageListView(movies: state.nowPlayingMovies);
+            /* BlocBuilder<NowPlayingCubit, NowPlayingState>(
+              builder: (context, state) {
+                if (state is HomePageSuccessState) {
+                  return HomePageListView(movies: state.nowPlayingMovies);
+                } else if (state is HomePageFailureState) {
+                  return Center(
+                    child: Text(state.errorMessage),
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
                 }
-                else if(state is HomePageFailureState){
-                  return Center(child: Text(state.errorMessage),);
-                }
-                else{
-                  return Center(child: CircularProgressIndicator(),);
-                }
-
               },
-
             ),
-                        /*const SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -129,11 +129,9 @@ class HomePage extends StatelessWidget {
               height: 20,
             ),
             const HomePageListView(),*/
-
           ],
         ),
       ),
     );
- 
-     }
+  }
 }

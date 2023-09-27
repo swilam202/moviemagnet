@@ -22,7 +22,7 @@ class MovieMagnet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return BlocProvider(create: (context)=>HomePageCubit(sl()),
+    return BlocProvider(create: (context)=>NowPlayingCubit(sl()),
     child: MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(96, 72, 71, 71),
