@@ -1,5 +1,7 @@
 import 'package:moviemagnet/movies/domain/entites/detailed%20movie.dart';
 
+import '../../../data/models/movie model.dart';
+
 abstract class HomePageState {}
 
 class HomePageInitialState extends HomePageState {}
@@ -12,12 +14,10 @@ class HomePageFailureState extends HomePageState {
 }
 
 class HomePageSuccessState extends HomePageState {
-  final List<Movie> nowPlayingMovies;
-  final List<Movie> popularMovies;
-  final List<Movie> topRatedMovies;
+  final List<MovieModel> nowPlayingMovies;
+
   HomePageSuccessState({
     required this.nowPlayingMovies,
-    required this.popularMovies,
-    required this.topRatedMovies,
+
   });
 }

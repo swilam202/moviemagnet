@@ -9,52 +9,28 @@ import '../../../../core/error/failures.dart';
 import '../../../data/models/movie model.dart';
 
 class HomePageCubit extends Cubit<HomePageState> {
-  GetPopularMovies getPopularMovies;
+  //GetPopularMovies getPopularMovies;
   GetNowPlayingMovies getNowPlayingMovies;
-  GetTopRatedMovies getTopRatedMovies;
+  //GetTopRatedMovies getTopRatedMovies;
   HomePageCubit(
     this.getNowPlayingMovies,
-    this.getPopularMovies,
-    this.getTopRatedMovies,
+    //this.getPopularMovies,
+    //this.getTopRatedMovies,
   ) : super(HomePageInitialState());
 
   getMovie() async {
-    List<MovieModel> nowPlayingMoviesList = [];
-    List<MovieModel> popularMoviesList = [];
-    List<MovieModel> topRatedMoviesList = [];
+
     emit(HomePageLoadingState());
     Either<Failure, List<MovieModel>> nowPlaying =
         await getNowPlayingMovies.excute();
-    Either<Failure, List<MovieModel>> popular =
-        await getNowPlayingMovies.excute();
-    Either<Failure, List<MovieModel>> topRated =
-        await getNowPlayingMovies.excute();
+
 
     nowPlaying.fold((l) {
       emit(HomePageFailureState(errorMessage: l.message));
     }, (r) {
-      //emit(HomePageSuccessState(movies: r));
-      nowPlayingMoviesList = r;
+      emit(HomePageSuccessState(nowPlayingMovies: r));
+
     });
 
-    popular.fold((l) {
-      emit(HomePageFailureState(errorMessage: l.message));
-    }, (r) {
-      //emit(HomePageSuccessState(movies: r));
-      popularMoviesList = r;
-    });
-    topRated.fold((l) {
-      emit(HomePageFailureState(errorMessage: l.message));
-    }, (r) {
-      //emit(HomePageSuccessState(movies: r));
-      topRatedMoviesList = r;
-    });
-
-    emit(HomePageSuccessState(
-      nowPlayingMovies: nowPlayingMoviesList,
-      popularMovies: popularMoviesList,
-      topRatedMovies: topRatedMoviesList,
-    ));
-    print(nowPlayingMoviesList);
   }
 }
