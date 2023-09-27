@@ -10,10 +10,10 @@ import '../../../data/models/movie model.dart';
 
 class HomePageCubit extends Cubit<HomePageState> {
   //GetPopularMovies getPopularMovies;
-  GetNowPlayingMovies getNowPlayingMovies;
+  GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
   //GetTopRatedMovies getTopRatedMovies;
   HomePageCubit(
-    this.getNowPlayingMovies,
+    this.getNowPlayingMoviesUseCase,
     //this.getPopularMovies,
     //this.getTopRatedMovies,
   ) : super(HomePageInitialState());
@@ -22,7 +22,7 @@ class HomePageCubit extends Cubit<HomePageState> {
 
     emit(HomePageLoadingState());
     Either<Failure, List<MovieModel>> nowPlaying =
-        await getNowPlayingMovies.excute();
+        await getNowPlayingMoviesUseCase.excute();
 
 
     nowPlaying.fold((l) {

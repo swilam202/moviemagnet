@@ -6,9 +6,9 @@ import '../../data/models/movie model.dart';
 import '../entites/detailed movie.dart';
 import '../repository/base movie repository.dart';
 
-class GetPopularMovies{
+class GetPopularMoviesUseCase{
   BaseMovieRepository baseMovieRepository;
-  GetPopularMovies(this.baseMovieRepository);
+  GetPopularMoviesUseCase(this.baseMovieRepository);
 
   Future<Either<Failure, List<MovieModel>>> excute()async{
     return await baseMovieRepository.getPopularMovies();
