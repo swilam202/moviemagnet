@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviemagnet/core/services/service%20locator.dart';
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
+import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 
 import 'movies/data/data source/movie remote data source.dart';
 import 'movies/data/repository/movies repository.dart';
@@ -27,6 +28,7 @@ class MovieMagnet extends StatelessWidget {
       providers: [
         BlocProvider(create: (context)=>NowPlayingCubit(sl())),
         BlocProvider(create: (context)=>PopularCubit(sl())),
+        BlocProvider(create: (context)=>TopRatedCubit(sl())),
       ],
     child: MaterialApp(
       theme: ThemeData(

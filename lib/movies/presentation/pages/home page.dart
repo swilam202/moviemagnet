@@ -8,6 +8,8 @@ import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.d
 import 'package:moviemagnet/movies/domain/usecases/get%20now%20playing%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20state.dart';
+import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
+import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20state.dart';
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view%20item.dart';
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view.dart';
 import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20section.dart';
@@ -32,6 +34,7 @@ class HomePage extends StatelessWidget {
               onPressed: () async {
                 await BlocProvider.of<NowPlayingCubit>(context).getMovies();
                 await BlocProvider.of<PopularCubit>(context).getMovies();
+                await BlocProvider.of<TopRatedCubit>(context).getMovies();
               },
               child: Text('Press'),
             ),
@@ -93,13 +96,13 @@ class HomePage extends StatelessWidget {
                   );
                 } else {
                   return //Center(child: CircularProgressIndicator(),);
-                   HomePageListViewShimmer();
+                   const HomePageListViewShimmer();
                 }
               },
             ),
             const SizedBox(
               height: 40,
-            ),/*
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -132,7 +135,20 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const HomePageListView(),*/
+            BlocBuilder<TopRatedCubit, TopRatedState>(
+              builder: (context, state) {
+                if (state is TopRatedSuccessState) {
+                  return HomePageListView(movies: state.movies);
+                } else if (state is TopRatedFailureState) {
+                  return Center(
+                    child: Text(state.errorMessage),
+                  );
+                } else {
+                  return //Center(child: CircularProgressIndicator(),);
+                   const HomePageListViewShimmer();
+                }
+              },
+            ),
           ],
         ),
       ),
