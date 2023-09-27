@@ -34,6 +34,7 @@ class MovieMagnet extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(96, 72, 71, 71),
         brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(backgroundColor: Colors.black)
       ),
       home: const HomePage(),
     ),
