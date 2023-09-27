@@ -27,7 +27,22 @@ class HomePage extends StatelessWidget {
             ElevatedButton(onPressed: ()async{
               await BlocProvider.of<HomePageCubit>(context).getMovie();
             }, child: Text('Press')),
-            const NowPlayingSection(),
+             BlocBuilder<HomePageCubit,HomePageState>(
+              builder: (context,state){
+                if(state is HomePageSuccessState){
+                  return  NowPlayingSection(movies: state.nowPlayingMovies);
+                }
+                else if(state is HomePageFailureState){
+                  return Center(child: Text(state.errorMessage),);
+                }
+                else{
+                  return Center(child: CircularProgressIndicator(),);
+                }
+
+              },
+
+            ),
+             
             const SizedBox(
               height: 40,
             ),
