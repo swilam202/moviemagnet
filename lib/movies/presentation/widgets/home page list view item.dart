@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 class HomePageListViewItem extends StatelessWidget {
@@ -8,7 +9,7 @@ class HomePageListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 5 / 8,
+      aspectRatio: 6 / 8,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -20,7 +21,12 @@ class HomePageListViewItem extends StatelessWidget {
           ),
         ),
         margin: const EdgeInsets.symmetric(horizontal: 8),
-        child: Text(movie.title),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(movie.title,maxLines: 2,textAlign: TextAlign.center,overflow: TextOverflow.fade,style: GoogleFonts.actor(fontWeight: FontWeight.bold),),
+          )),
       ),
       
     );

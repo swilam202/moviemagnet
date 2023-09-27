@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20now%20playing%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20popular%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20top%20rated%20movies.dart';
-import 'package:moviemagnet/movies/presentation/controller/home%20page%20controller.dart/home%20page%20state.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../data/models/movie model.dart';
+import 'now playing state.dart';
 
 class NowPlayingCubit extends Cubit<NowPlayingState> {
   GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
@@ -23,7 +23,7 @@ class NowPlayingCubit extends Cubit<NowPlayingState> {
     nowPlaying.fold((l) {
       emit(NowPlayingFailureState(errorMessage: l.message));
     }, (r) {
-      emit(NowPlayingSuccessState(nowPlayingMovies: r));
+      emit(NowPlayingSuccessState(movies: r));
     });
   }
 }

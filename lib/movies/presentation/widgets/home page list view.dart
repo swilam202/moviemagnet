@@ -14,6 +14,7 @@ class HomePageListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
+      
         itemBuilder: (context, index) {
           return  HomePageListViewItem(movie: movies[index],);
         },

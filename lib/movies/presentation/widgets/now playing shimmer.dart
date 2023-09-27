@@ -14,10 +14,11 @@ class NowPlayingShimmer extends StatelessWidget {
           baseColor: Colors.grey[850]!,
           highlightColor: Colors.grey[800]!,
           child: Container(
+            margin: const EdgeInsets.all(8),
             height: MediaQuery.of(context).size.height * 0.4,
             decoration: BoxDecoration(
               color: Colors.black,
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(16),
             ),
           ),
         ),
