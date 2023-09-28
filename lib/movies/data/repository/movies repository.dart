@@ -41,4 +41,15 @@ class MovieRepository extends BaseMovieRepository {
       return Left(ServerFailure(error.errorModel.statusMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> getUpComingMovies() async {
+    List<MovieModel> reslut =
+        await baseMovieReomteDataSource.getUpComingMovies();
+    try {
+      return Right(reslut);
+    } on ServerException catch (error) {
+      return Left(ServerFailure(error.errorModel.statusMessage));
+    }
+  }
 }

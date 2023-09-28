@@ -9,6 +9,7 @@ import 'package:moviemagnet/movies/presentation/controller/popular%20controller/
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20state.dart';
 import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20state.dart';
+import 'package:moviemagnet/movies/presentation/controller/up%20coming%20controller/up%20coming%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/widgets/bottom%20sheet.dart';
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view%20item.dart';
 import 'package:moviemagnet/movies/presentation/widgets/home%20page%20list%20view.dart';
@@ -16,9 +17,10 @@ import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20section.
 import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20shimmer.dart';
 import 'package:moviemagnet/movies/presentation/widgets/popular%20section.dart';
 import 'package:moviemagnet/movies/presentation/widgets/top%20rated%20section.dart';
+import 'package:moviemagnet/movies/presentation/widgets/upComingSection.dart';
 
-import '../controller/now playing controller.dart/now playing cubit.dart';
-import '../controller/now playing controller.dart/now playing state.dart';
+import '../controller/now playing controller/now playing cubit.dart';
+import '../controller/now playing controller/now playing state.dart';
 import '../widgets/home page list view shimmer.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,30 +39,30 @@ class HomePage extends StatelessWidget {
                 await BlocProvider.of<NowPlayingCubit>(context).getMovies();
                 await BlocProvider.of<PopularCubit>(context).getMovies();
                 await BlocProvider.of<TopRatedCubit>(context).getMovies();
+                await BlocProvider.of<UpComingCubit>(context).getMovies();
               },
               child: Text('Press'),
             ),
-            BlocBuilder<NowPlayingCubit, NowPlayingState>(
-              builder: (context, state) {
-                if (state is NowPlayingSuccessState) {
-                  return NowPlayingSection(movies: state.movies);
-                } else if (state is NowPlayingFailureState) {
-                  return Center(
-                    child: Text(state.errorMessage),
-                  );
-                } else {
-                  return const NowPlayingShimmer();
-                }
-              },
-            ),
+            NowPlayingSection(),
             const SizedBox(
-              height: 40,
+              height: 40
             ),
             const PopularSection(),
             const SizedBox(
-              height: 40,
+              height: 40
             ),
        TopRatedSection(),
+       const SizedBox(
+              height: 40
+            ),
+
+            const SizedBox(
+              height: 40
+            ),
+            UpComingSection(),
+            const SizedBox(
+              height: 40
+            ),
                ],
         ),
       ),
