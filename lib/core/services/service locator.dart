@@ -32,10 +32,10 @@ void setup(){
   sl.registerLazySingleton(() => GetTopRatedMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetUpComingMoviesUseCase(sl()));
 
-    sl.registerFactory(() => NowPlayingCubit(sl()));
-  sl.registerFactory(() => PopularCubit(sl()));
-  sl.registerFactory(() => TopRatedCubit(sl()));
-  sl.registerFactory(() => UpComingCubit(sl()));
+    sl.registerFactory(() => NowPlayingCubit(sl())..getMovies());
+  sl.registerFactory(() => PopularCubit(sl())..getMovies());
+  sl.registerFactory(() => TopRatedCubit(sl())..getMovies());
+  sl.registerFactory(() => UpComingCubit(sl())..getMovies());
   
  
 }

@@ -34,15 +34,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
-            ElevatedButton(
-              onPressed: () async {
-                await BlocProvider.of<NowPlayingCubit>(context).getMovies();
-                await BlocProvider.of<PopularCubit>(context).getMovies();
-                await BlocProvider.of<TopRatedCubit>(context).getMovies();
-                await BlocProvider.of<UpComingCubit>(context).getMovies();
-              },
-              child: Text('Press'),
-            ),
+            
             NowPlayingSection(),
             const SizedBox(
               height: 40
