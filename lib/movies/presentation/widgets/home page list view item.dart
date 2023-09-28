@@ -4,11 +4,12 @@ import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20movie%20detils%20usecase.dart';
 
 import '../../../core/services/service locator.dart';
+import '../../domain/entites/movie.dart';
 
 class HomePageListViewItem extends StatelessWidget {
   const HomePageListViewItem({super.key,required this.movie,});
 
-  final MovieModel movie;
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

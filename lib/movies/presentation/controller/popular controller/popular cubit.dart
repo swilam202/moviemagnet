@@ -5,6 +5,7 @@ import 'package:moviemagnet/movies/presentation/controller/popular%20controller/
 
 import '../../../../core/error/failures.dart';
 import '../../../data/models/movie model.dart';
+import '../../../domain/entites/movie.dart';
 
 class PopularCubit extends Cubit<PopularState> {
   PopularCubit(this.popularMoviesUseCase) : super(PopularInitialState());
@@ -12,7 +13,7 @@ class PopularCubit extends Cubit<PopularState> {
 
   getMovies() async {
     emit(PopularLoadingState());
-    Either<Failure, List<MovieModel>> nowPlaying =
+    Either<Failure, List<Movie>> nowPlaying =
         await popularMoviesUseCase.excute();
 
     nowPlaying.fold((l) {

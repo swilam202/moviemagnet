@@ -14,7 +14,7 @@ class NowPlayingFailureState extends NowPlayingState {
 }
 
 class NowPlayingSuccessState extends NowPlayingState {
-  final List<MovieModel> movies;
+  final List<Movie> movies;
 
   NowPlayingSuccessState({
     required this.movies,

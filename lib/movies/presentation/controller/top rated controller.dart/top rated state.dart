@@ -1,4 +1,5 @@
 import '../../../data/models/movie model.dart';
+import '../../../domain/entites/movie.dart';
 
 abstract class TopRatedState {}
 
@@ -12,7 +13,7 @@ class TopRatedFailureState extends TopRatedState {
 }
 
 class TopRatedSuccessState extends TopRatedState {
-  final List<MovieModel> movies;
+  final List<Movie> movies;
 
   TopRatedSuccessState({
     required this.movies,

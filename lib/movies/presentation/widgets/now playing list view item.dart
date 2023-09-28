@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 import '../../../core/network/api constants.dart';
+import '../../domain/entites/movie.dart';
 
 class NowPlayingListViewItem extends StatelessWidget {
   const NowPlayingListViewItem({super.key, required this.movie});
-  final MovieModel movie;
+  final Movie movie;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

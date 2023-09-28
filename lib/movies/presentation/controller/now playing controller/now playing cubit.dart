@@ -6,6 +6,7 @@ import 'package:moviemagnet/movies/domain/usecases/get%20top%20rated%20movies.da
 
 import '../../../../core/error/failures.dart';
 import '../../../data/models/movie model.dart';
+import '../../../domain/entites/movie.dart';
 import 'now playing state.dart';
 
 class NowPlayingCubit extends Cubit<NowPlayingState> {
@@ -17,7 +18,7 @@ class NowPlayingCubit extends Cubit<NowPlayingState> {
 
   getMovies() async {
     emit(NowPlayingLoadingState());
-    Either<Failure, List<MovieModel>> nowPlaying =
+    Either<Failure, List<Movie>> nowPlaying =
         await getNowPlayingMoviesUseCase.excute();
 
     nowPlaying.fold((l) {

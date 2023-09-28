@@ -1,4 +1,5 @@
 import '../../../data/models/movie model.dart';
+import '../../../domain/entites/movie.dart';
 
 abstract class UpComingState{}
 
@@ -9,6 +10,6 @@ class UpComingFailureState extends UpComingState{
   UpComingFailureState({required this.errorMessage});
 }
 class UpComingSuccessState extends UpComingState{
-  List <MovieModel> movies;
+  List <Movie> movies;
   UpComingSuccessState({required this.movies});
 }

@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 import '../../../core/network/api constants.dart';
+import '../../domain/entites/movie.dart';
 
 class MovieListPage extends StatelessWidget {
   const MovieListPage({super.key, required this.movies, required this.title});
 
   final String title;
-  final List<MovieModel> movies;
+  final List<Movie> movies;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

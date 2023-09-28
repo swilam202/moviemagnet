@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
+import '../../domain/entites/movie.dart';
 import 'home page list view item.dart';
 
 class HomePageListView extends StatelessWidget {
   const HomePageListView({super.key,required this.movies});
-  final List<MovieModel> movies;
+  final List<Movie> movies;
 
   @override
   Widget build(BuildContext context) {
