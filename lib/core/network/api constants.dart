@@ -7,6 +7,7 @@ abstract class APIConstants{
   static const String topRatedMoviesLink = '$baseURL/movie/top_rated?api_key=$apiKey';
   static const String upComingMoviesLink = '$baseURL/movie/upcoming?api_key=$apiKey';
   static  String getImageLink(String path) => '$baseImageURL$path';
+  static  String getMovieDetailsLink(String movieId) => '$baseURL/movie/$movieId?api_key=$apiKey';
   
   
 

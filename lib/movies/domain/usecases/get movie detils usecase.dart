@@ -6,8 +6,9 @@ import '../../../core/error/failures.dart';
 
 class GetMovieDetailsUseCasw {
   BaseMovieRepository baseMovieRepository;
+
   GetMovieDetailsUseCasw(this.baseMovieRepository);
-  Future<Either<Failure, MovieDetails>> excute() async {
-    return await baseMovieRepository.getMovieDetails();
+  Future<Either<Failure, MovieDetails>> excute(  String movieId) async {
+    return await baseMovieRepository.getMovieDetails(movieId);
   }
 }

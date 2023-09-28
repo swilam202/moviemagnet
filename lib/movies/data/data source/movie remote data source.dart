@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:moviemagnet/core/error/exceptions.dart';
 import 'package:moviemagnet/core/error/failures.dart';
 import 'package:moviemagnet/core/network/api%20constants.dart';
+import 'package:moviemagnet/movies/data/models/movie%20details%20model.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 abstract class BaseMovieReomteDataSource {
@@ -10,6 +11,7 @@ abstract class BaseMovieReomteDataSource {
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
   Future<List<MovieModel>> getUpComingMovies();
+  Future<MvoieDetailsModel> getMovieDetails(String movieId);
 }
 
 class MovieReomteDataSource extends BaseMovieReomteDataSource {
@@ -62,6 +64,17 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
           List.from((response.data['results'] as List).map((e) => MovieModel.fromJson(e)));
       return movies;
     } else {
+      throw ServerException(response.data);
+    }
+  }
+  
+  @override
+  Future<MvoieDetailsModel> getMovieDetails( String movieId) async{
+    Response response = await dio.get(APIConstants.getMovieDetailsLink(movieId));
+    if(response.statusCode == 200){
+      return response.data;
+    }
+    else{
       throw ServerException(response.data);
     }
   }
