@@ -5,7 +5,7 @@ import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 import '../../../core/network/api constants.dart';
 
 class MovieListPage extends StatelessWidget {
-  const MovieListPage({super.key, required this.movies,required this.title});
+  const MovieListPage({super.key, required this.movies, required this.title});
 
   final String title;
   final List<MovieModel> movies;
@@ -22,7 +22,7 @@ class MovieListPage extends StatelessWidget {
         itemBuilder: ((context, index) {
           return Container(
             margin: const EdgeInsets.all(5),
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Color.fromARGB(255, 53, 53, 53),
               borderRadius: BorderRadius.circular(16),
@@ -43,59 +43,57 @@ class MovieListPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: Text(
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
                         movies[index].title,
                         style: GoogleFonts.lato(fontSize: 16),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          color: Colors.red,
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                            movies[index].releaseDate.split('-')[0],
-                            style: GoogleFonts.lato(
-                              fontWeight: FontWeight.bold,
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            color: Colors.red,
+                            padding: EdgeInsets.all(3),
+                            child: Text(
+                              movies[index].releaseDate.split('-')[0],
+                              style: GoogleFonts.lato(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(width: 15),
-                            Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                              size: 16,
-                            ),
-                            SizedBox(width: 5),
-                            Text(movies[index].voteAverage.toString()),
-                          ],
-                        )
-                      ],
-                    ),
-                    Container(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: Text(
+                          Row(
+                            children: [
+                              SizedBox(width: 15),
+                              Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 16,
+                              ),
+                              SizedBox(width: 5),
+                              Text(movies[index].voteAverage.toString()),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
                         movies[index].overview,
                         style: GoogleFonts.lato(fontSize: 16),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )
               ],
             ),

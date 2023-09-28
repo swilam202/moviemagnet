@@ -26,15 +26,15 @@ class MovieMagnet extends StatelessWidget {
     
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>NowPlayingCubit(sl())),
-        BlocProvider(create: (context)=>PopularCubit(sl())),
-        BlocProvider(create: (context)=>TopRatedCubit(sl())),
+        BlocProvider(create: (context)=>sl<NowPlayingCubit>()),
+        BlocProvider(create: (context)=>sl<PopularCubit>()),
+        BlocProvider(create: (context)=>sl<TopRatedCubit>()),
       ],
     child: MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(96, 72, 71, 71),
         brightness: Brightness.dark,
-        appBarTheme: AppBarTheme(backgroundColor: Colors.black)
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
       ),
       home: const HomePage(),
     ),

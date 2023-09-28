@@ -6,6 +6,9 @@ import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.d
 import 'package:moviemagnet/movies/domain/usecases/get%20now%20playing%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20popular%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20top%20rated%20movies.dart';
+import 'package:moviemagnet/movies/presentation/controller/now%20playing%20controller.dart/now%20playing%20cubit.dart';
+import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
+import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 
 
 final sl = GetIt.instance;
@@ -13,6 +16,10 @@ final sl = GetIt.instance;
 class ServiceLacator{
   
 void setup(){ 
+  
+  
+
+
   sl.registerLazySingleton<BaseMovieReomteDataSource>(() => MovieReomteDataSource());
   sl.registerLazySingleton<BaseMovieRepository>(() => MovieRepository(sl()));
 
@@ -20,6 +27,10 @@ void setup(){
   sl.registerLazySingleton(() => GetNowPlayingMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetPopularMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetTopRatedMoviesUseCase(sl()));
+
+    sl.registerFactory(() => NowPlayingCubit(sl()));
+  sl.registerFactory(() => PopularCubit(sl()));
+  sl.registerFactory(() => TopRatedCubit(sl()));
   
  
 }
