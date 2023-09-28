@@ -3,6 +3,7 @@ import 'package:moviemagnet/core/error/exceptions.dart';
 import 'package:moviemagnet/core/error/failures.dart';
 import 'package:moviemagnet/movies/data/data%20source/movie%20remote%20data%20source.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
+import 'package:moviemagnet/movies/domain/entites/movie%20details.dart';
 import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.dart';
 
 class MovieRepository extends BaseMovieRepository {
@@ -49,6 +50,17 @@ class MovieRepository extends BaseMovieRepository {
     try {
       return Right(reslut);
     } on ServerException catch (error) {
+      return Left(ServerFailure(error.errorModel.statusMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MovieDetails>> getMovieDetails(String movieId)async {
+    final reslut = await baseMovieReomteDataSource.getMovieDetails(movieId);
+    try{
+      return Right(reslut);
+    }
+    on ServerException catch(error){
       return Left(ServerFailure(error.errorModel.statusMessage));
     }
   }
