@@ -11,7 +11,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   MovieDetailsCubit(this.getMovieDetailsUseCase) : super(MovieDetailsInitialState());
   GetMovieDetailsUseCase getMovieDetailsUseCase;
 
-  getMovies(int id) async {
+  getMovie(int id) async {
     emit(MovieDetailsLoadingState());
     Either<Failure, MovieDetails> details =
         await getMovieDetailsUseCase.excute(id.toString());

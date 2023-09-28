@@ -55,7 +55,7 @@ class MovieListPage extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 15
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,7 +85,7 @@ class MovieListPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 15
                       ),
                       Text(
                         movies[index].overview,
@@ -95,7 +95,7 @@ class MovieListPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           );

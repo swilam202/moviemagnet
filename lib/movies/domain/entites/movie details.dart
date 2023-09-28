@@ -1,3 +1,4 @@
+import 'package:moviemagnet/movies/domain/entites/generes.dart';
 import 'package:moviemagnet/movies/domain/entites/production%20companies.dart';
 
 class MovieDetails {
@@ -8,13 +9,15 @@ class MovieDetails {
   final String overview;
   final String releaseDate;
   final num runtime;
-  //final List<ProductionCompaines> productionCompaines;
+  final List<Generes> genres;
+ // final List<ProductionCompaines> productionCompaines;
 
-  MovieDetails({
+  const MovieDetails({
+    required this.genres,
     required this.id,
     required this.backdropPath,
     required this.overview,
-    //required this.productionCompaines,
+   // required this.productionCompaines,
     required this.releaseDate,
     required this.runtime,
     required this.title,
@@ -29,6 +32,7 @@ class MovieDetails {
       other is MovieDetails &&
           id == other.id &&
           title == other.title &&
+          genres == other.genres &&
           voteAverage == other.voteAverage &&
           //productionCompaines == other.productionCompaines &&
           runtime == other.runtime &&
@@ -42,6 +46,7 @@ class MovieDetails {
       title.hashCode ^
       voteAverage.hashCode ^
       //productionCompaines.hashCode ^
+      genres.hashCode ^
       runtime.hashCode ^
       backdropPath.hashCode ^
       releaseDate.hashCode ^

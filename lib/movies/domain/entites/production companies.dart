@@ -1,4 +1,4 @@
-class ProductionCompaines {
+/*class ProductionCompaines {
   int id;
   String logoPath;
   String name;
@@ -25,4 +25,4 @@ class ProductionCompaines {
       logoPath.hashCode ^
       name.hashCode ;
 
-}
+}*/

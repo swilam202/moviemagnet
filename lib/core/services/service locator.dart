@@ -7,6 +7,7 @@ import 'package:moviemagnet/movies/domain/usecases/get%20now%20playing%20movies%
 import 'package:moviemagnet/movies/domain/usecases/get%20popular%20movies%20usecase.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20top%20rated%20movies.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20upcoming%20movies%20usecase.dart';
+import 'package:moviemagnet/movies/presentation/controller/movie%20details%20controller/movie%20details%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/up%20coming%20controller/up%20coming%20cubit.dart';
@@ -38,6 +39,8 @@ void setup(){
   sl.registerFactory(() => PopularCubit(sl())..getMovies());
   sl.registerFactory(() => TopRatedCubit(sl())..getMovies());
   sl.registerFactory(() => UpComingCubit(sl())..getMovies());
+  sl.registerFactory(() => MovieDetailsCubit(sl()));
+
   
  
 }

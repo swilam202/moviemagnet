@@ -1,4 +1,4 @@
-import 'package:moviemagnet/movies/domain/entites/production%20companies.dart';
+/*import 'package:moviemagnet/movies/domain/entites/production%20companies.dart';
 
 class ProductionCompainesModel extends ProductionCompaines{
   ProductionCompainesModel({required super.id, required super.logoPath, required super.name,});
@@ -9,4 +9,4 @@ class ProductionCompainesModel extends ProductionCompaines{
       name: json['name'],
     );
   }
-}
+}*/

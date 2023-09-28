@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviemagnet/core/services/service%20locator.dart';
+import 'package:moviemagnet/movies/presentation/controller/movie%20details%20controller/movie%20details%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/up%20coming%20controller/up%20coming%20cubit.dart';
@@ -31,6 +32,7 @@ class MovieMagnet extends StatelessWidget {
         BlocProvider(create: (context)=>sl<PopularCubit>()),
         BlocProvider(create: (context)=>sl<TopRatedCubit>()),
         BlocProvider(create: (context)=>sl<UpComingCubit>()),
+        BlocProvider(create: (context)=>sl<MovieDetailsCubit>()),
       ],
     child: MaterialApp(
       theme: ThemeData(
