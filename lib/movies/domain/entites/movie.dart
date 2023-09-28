@@ -2,7 +2,6 @@ class Movie {
   final int id;
   final String title;
   final num voteAverage;
-  final List ganderIds;
   final String backdropPath;
   final String overview;
   final String releaseDate;
@@ -10,7 +9,7 @@ class Movie {
   const Movie({
     required this.id,
     required this.backdropPath,
-    required this.ganderIds,
+
     required this.overview,
     required this.title,
     required this.voteAverage,
@@ -24,7 +23,7 @@ class Movie {
           id == other.id &&
           title == other.title &&
           voteAverage == other.voteAverage &&
-          ganderIds == other.ganderIds &&
+
           backdropPath == other.backdropPath &&
           releaseDate == other.releaseDate &&
           overview == other.overview;
@@ -34,7 +33,7 @@ class Movie {
       id.hashCode ^
       title.hashCode ^
       voteAverage.hashCode ^
-      ganderIds.hashCode ^
+
       backdropPath.hashCode ^
       releaseDate.hashCode ^
       overview.hashCode;

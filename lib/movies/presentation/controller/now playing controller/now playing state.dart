@@ -1,4 +1,4 @@
-import 'package:moviemagnet/movies/domain/entites/detailed%20movie.dart';
+import 'package:moviemagnet/movies/domain/entites/movie.dart';
 
 import '../../../data/models/movie model.dart';
 
