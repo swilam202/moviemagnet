@@ -4,10 +4,10 @@ import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.d
 
 import '../../../core/error/failures.dart';
 
-class GetMovieDetailsUseCasw {
+class GetMovieDetailsUseCase {
   BaseMovieRepository baseMovieRepository;
 
-  GetMovieDetailsUseCasw(this.baseMovieRepository);
+  GetMovieDetailsUseCase(this.baseMovieRepository);
   Future<Either<Failure, MovieDetails>> excute(  String movieId) async {
     return await baseMovieRepository.getMovieDetails(movieId);
   }

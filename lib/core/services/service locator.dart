@@ -11,6 +11,7 @@ import 'package:moviemagnet/movies/presentation/controller/popular%20controller/
 import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
 import 'package:moviemagnet/movies/presentation/controller/up%20coming%20controller/up%20coming%20cubit.dart';
 
+import '../../movies/domain/usecases/get movie detils usecase.dart';
 import '../../movies/presentation/controller/now playing controller/now playing cubit.dart';
 
 
@@ -31,6 +32,7 @@ void setup(){
   sl.registerLazySingleton(() => GetPopularMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetTopRatedMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetUpComingMoviesUseCase(sl()));
+  sl.registerLazySingleton(() => GetMovieDetailsUseCase(sl()));
 
     sl.registerFactory(() => NowPlayingCubit(sl())..getMovies());
   sl.registerFactory(() => PopularCubit(sl())..getMovies());

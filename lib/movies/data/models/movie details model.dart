@@ -7,7 +7,7 @@ class MvoieDetailsModel extends MovieDetails {
     required super.id,
     required super.backdropPath,
     required super.overview,
-    required super.productionCompaines,
+   // required super.productionCompaines,
     required super.releaseDate,
     required super.runtime,
     required super.title,
@@ -19,8 +19,8 @@ class MvoieDetailsModel extends MovieDetails {
       id: json['id'],
       backdropPath: json['backdrop_path'],
       overview: json['overview'],
-      productionCompaines: List.from((json['production_companies'] as List)
-          .map((e) => ProductionCompainesModel.fromJson(e))),
+      //productionCompaines: List.from((json['production_companies'] as List)
+        //  .map((e) => ProductionCompainesModel.fromJson(e))),
       releaseDate: json['release_date'],
       runtime: json['runtime'],
       title: json['title'],

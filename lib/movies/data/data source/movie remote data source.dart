@@ -71,8 +71,9 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
   @override
   Future<MvoieDetailsModel> getMovieDetails( String movieId) async{
     Response response = await dio.get(APIConstants.getMovieDetailsLink(movieId));
+    MvoieDetailsModel movie = MvoieDetailsModel.fromJson(response.data);
     if(response.statusCode == 200){
-      return response.data;
+      return movie;
     }
     else{
       throw ServerException(response.data);

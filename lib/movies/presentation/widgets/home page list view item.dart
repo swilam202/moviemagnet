@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
+import 'package:moviemagnet/movies/domain/usecases/get%20movie%20detils%20usecase.dart';
+
+import '../../../core/services/service locator.dart';
 
 class HomePageListViewItem extends StatelessWidget {
   const HomePageListViewItem({super.key,required this.movie,});
@@ -8,27 +11,37 @@ class HomePageListViewItem extends StatelessWidget {
   final MovieModel movie;
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 6 / 8,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          image:  DecorationImage(
-            image: NetworkImage(
-              'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+    return GestureDetector(
+      onTap: ()async{
+          final reslut 
+          = await GetMovieDetailsUseCase(sl()).excute(movie.id.toString());
+          print('******************************************************');
+          print(reslut);
+          print('******************************************************');
+          
+      },
+      child: AspectRatio(
+        aspectRatio: 6 / 8,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image:  DecorationImage(
+              image: NetworkImage(
+                'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+              ),
+              fit: BoxFit.fill,
             ),
-            fit: BoxFit.fill,
           ),
+          margin: const EdgeInsets.symmetric(horizontal: 8),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(movie.title,maxLines: 2,textAlign: TextAlign.center,overflow: TextOverflow.fade,style: GoogleFonts.actor(fontWeight: FontWeight.bold),),
+            )),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(movie.title,maxLines: 2,textAlign: TextAlign.center,overflow: TextOverflow.fade,style: GoogleFonts.actor(fontWeight: FontWeight.bold),),
-          )),
+        
       ),
-      
     );
   }
 }

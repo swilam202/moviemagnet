@@ -8,13 +8,13 @@ class MovieDetails {
   final String overview;
   final String releaseDate;
   final num runtime;
-  final List<ProductionCompaines> productionCompaines;
+  //final List<ProductionCompaines> productionCompaines;
 
   MovieDetails({
     required this.id,
     required this.backdropPath,
     required this.overview,
-    required this.productionCompaines,
+    //required this.productionCompaines,
     required this.releaseDate,
     required this.runtime,
     required this.title,
@@ -30,7 +30,7 @@ class MovieDetails {
           id == other.id &&
           title == other.title &&
           voteAverage == other.voteAverage &&
-          productionCompaines == other.productionCompaines &&
+          //productionCompaines == other.productionCompaines &&
           runtime == other.runtime &&
           backdropPath == other.backdropPath &&
           releaseDate == other.releaseDate &&
@@ -41,7 +41,7 @@ class MovieDetails {
       id.hashCode ^
       title.hashCode ^
       voteAverage.hashCode ^
-      productionCompaines.hashCode ^
+      //productionCompaines.hashCode ^
       runtime.hashCode ^
       backdropPath.hashCode ^
       releaseDate.hashCode ^
