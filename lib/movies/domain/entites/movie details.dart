@@ -21,16 +21,29 @@ class MovieDetails {
     required this.voteAverage,
   });
 
-  factory MovieDetails.fromJson(Map<String, dynamic> json) {
-    return MovieDetails(
-      id: json['id'],
-      backdropPath: json['backdrop_path'],
-      overview: json['overview'],
-      productionCompaines: List.from((json['production_companies'] as List).map((e) => ProductionCompaines.fromJson(e))),
-      releaseDate: json['release_date'],
-      runtime: json['runtime'],
-      title: json['title'],
-      voteAverage: json['vote_average'],
-    );
-  }
+
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MovieDetails &&
+          id == other.id &&
+          title == other.title &&
+          voteAverage == other.voteAverage &&
+          productionCompaines == other.productionCompaines &&
+          runtime == other.runtime &&
+          backdropPath == other.backdropPath &&
+          releaseDate == other.releaseDate &&
+          overview == other.overview;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      title.hashCode ^
+      voteAverage.hashCode ^
+      productionCompaines.hashCode ^
+      runtime.hashCode ^
+      backdropPath.hashCode ^
+      releaseDate.hashCode ^
+      overview.hashCode;
 }

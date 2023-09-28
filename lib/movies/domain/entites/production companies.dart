@@ -8,11 +8,21 @@ class ProductionCompaines {
     required this.logoPath,
     required this.name,
   });
-  factory ProductionCompaines.fromJson(Map<String, dynamic> json) {
-    return ProductionCompaines(
-      id: json['id'],
-      logoPath: json['logo_path'],
-      name: json['name'],
-    );
-  }
+
+
+
+    @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ProductionCompaines &&
+          id == other.id &&
+          logoPath == other.logoPath &&
+          name == other.name;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      logoPath.hashCode ^
+      name.hashCode ;
+
 }
