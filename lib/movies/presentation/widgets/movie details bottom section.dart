@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moviemagnet/movies/presentation/widgets/movie%20details%20bottom%20section%20shimmer.dart';
 
 import '../controller/recommendations controller/recommendations cubit.dart';
 import '../controller/recommendations controller/recommendations state.dart';
@@ -37,7 +38,7 @@ class MovieDetailsBottomSection extends StatelessWidget {
             return Center(child: Text(state.errorMessage),);
           }
           else{
-            return CircularProgressIndicator();
+            return MovieDetailsBottomSectionShimmer();
           }
         },
       )

@@ -36,7 +36,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:ListView(
-        padding: EdgeInsets.all(16),
         shrinkWrap: true,
         children: [
           MovieDetailsTopSection(),

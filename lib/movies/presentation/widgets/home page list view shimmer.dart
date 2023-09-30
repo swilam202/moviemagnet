@@ -20,7 +20,6 @@ class HomePageListViewShimmer extends StatelessWidget {
               aspectRatio: 6 / 8,
               child: Container(
                 margin: const EdgeInsets.all(8),
-                //height: MediaQuery.of(context).size.height * 0.4,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(16),

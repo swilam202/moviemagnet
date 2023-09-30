@@ -2,7 +2,7 @@ class Movie {
   final int id;
   final String title;
   final num voteAverage;
-  final String backdropPath;
+  final String? backdropPath;
   final String overview;
   final String releaseDate;
 

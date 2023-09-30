@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moviemagnet/core/network/api%20constants.dart';
@@ -15,7 +16,7 @@ class HomePageListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()async{
+      onTap: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MovieDetailsPage(id: movie.id)));
           
           
@@ -26,9 +27,10 @@ class HomePageListViewItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image:  DecorationImage(
-              image: NetworkImage(
+              image: CachedNetworkImageProvider(
                 APIConstants.getImageLink(movie.backdropPath),
-              ),
+                errorListener: (p0) => Icon(Icons.error),
+            ),
               fit: BoxFit.fill,
             ),
           ),

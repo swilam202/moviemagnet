@@ -5,7 +5,7 @@ class MovieDetails {
   final int id;
   final String title;
   final num voteAverage;
-  final String backdropPath;
+  final String? backdropPath;
   final String overview;
   final String releaseDate;
   final num runtime;

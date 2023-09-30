@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moviemagnet/core/widgets/network%20images.dart';
 
 import '../../../core/network/api constants.dart';
 import '../controller/movie details controller/movie details cubit.dart';
 import '../controller/movie details controller/movie details state.dart';
+import 'movie details top section shimmer.dart';
 
 class MovieDetailsTopSection extends StatelessWidget {
   const MovieDetailsTopSection({super.key});
@@ -20,11 +23,10 @@ class MovieDetailsTopSection extends StatelessWidget {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.3,
-                  child: Image.network(
-                    APIConstants.getImageLink(state.movie.backdropPath),
-                    fit: BoxFit.fill,
-                  ),
+                  child: NetworkImages(image: APIConstants.getImageLink(state.movie.backdropPath)),
                 ),
+
+                
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Text(
@@ -58,12 +60,12 @@ class MovieDetailsTopSection extends StatelessWidget {
                     ),
                     SizedBox(width: 5),
                     Text(
-                      state.movie.voteAverage.toString(),
+                      state.movie.voteAverage.toStringAsFixed(1).toString(),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16),
@@ -89,6 +91,9 @@ class MovieDetailsTopSection extends StatelessWidget {
                       )
                       .toList(),
                 ),
+                SizedBox(
+                  height: 30
+                ),
               ],
             );
           } else if (state is MovieDetailsFailureState) {
@@ -96,9 +101,7 @@ class MovieDetailsTopSection extends StatelessWidget {
               child: Text(state.errorMessage),
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return MovieDetailsTopSectionShimmer();
           }
         },
       );
