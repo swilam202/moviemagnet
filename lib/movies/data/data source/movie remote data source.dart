@@ -5,13 +5,15 @@ import 'package:moviemagnet/core/error/failures.dart';
 import 'package:moviemagnet/core/network/api%20constants.dart';
 import 'package:moviemagnet/movies/data/models/movie%20details%20model.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
+import 'package:moviemagnet/movies/data/models/movie%20recommedations%20model.dart';
 
 abstract class BaseMovieReomteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
   Future<List<MovieModel>> getUpComingMovies();
-  Future<MvoieDetailsModel> getMovieDetails(String movieId);
+  Future<MovieDetailsModel> getMovieDetails(String movieId);
+  Future<List<MovieRecommendationsModel>> getMovieRecommendations(String movieId);
 }
 
 class MovieReomteDataSource extends BaseMovieReomteDataSource {
@@ -69,11 +71,23 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
   }
   
   @override
-  Future<MvoieDetailsModel> getMovieDetails( String movieId) async{
+  Future<MovieDetailsModel> getMovieDetails( String movieId) async{
     Response response = await dio.get(APIConstants.getMovieDetailsLink(movieId));
-    MvoieDetailsModel movie = MvoieDetailsModel.fromJson(response.data);
+    MovieDetailsModel movie = MovieDetailsModel.fromJson(response.data);
     if(response.statusCode == 200){
       return movie;
+    }
+    else{
+      throw ServerException(response.data);
+    }
+  }
+  
+  @override
+  Future<List<MovieRecommendationsModel>> getMovieRecommendations(String movieId) async{
+   Response response = await dio.get(APIConstants.getRecommendationsLink(movieId));
+   List<MovieRecommendationsModel> movies = List.from((response.data['results'] as List).map((e) => MovieRecommendationsModel.fromJson(e)));
+    if(response.statusCode == 200){
+      return movies;
     }
     else{
       throw ServerException(response.data);

@@ -8,7 +8,7 @@ class GetMovieDetailsUseCase {
   BaseMovieRepository baseMovieRepository;
 
   GetMovieDetailsUseCase(this.baseMovieRepository);
-  Future<Either<Failure, MovieDetails>> excute(  String movieId) async {
+  Future<Either<Failure, MovieDetails>> excute(String movieId) async {
     return await baseMovieRepository.getMovieDetails(movieId);
   }
 }

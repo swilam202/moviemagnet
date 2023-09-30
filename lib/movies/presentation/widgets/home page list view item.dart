@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:moviemagnet/core/network/api%20constants.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 import 'package:moviemagnet/movies/domain/usecases/get%20movie%20detils%20usecase.dart';
 import 'package:moviemagnet/movies/presentation/pages/movie%20details%20page.dart';
@@ -26,7 +27,7 @@ class HomePageListViewItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             image:  DecorationImage(
               image: NetworkImage(
-                'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                APIConstants.getImageLink(movie.backdropPath),
               ),
               fit: BoxFit.fill,
             ),
@@ -37,7 +38,7 @@ class HomePageListViewItem extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(movie.title,maxLines: 2,textAlign: TextAlign.center,overflow: TextOverflow.fade,style: GoogleFonts.actor(fontWeight: FontWeight.bold),),
-            )),
+            ),),
         ),
         
       ),

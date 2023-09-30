@@ -3,8 +3,8 @@ import 'package:moviemagnet/movies/domain/entites/movie%20details.dart';
 
 import 'production companies model.dart';
 
-class MvoieDetailsModel extends MovieDetails {
-  MvoieDetailsModel({
+class MovieDetailsModel extends MovieDetails {
+  MovieDetailsModel({
     required super.id,
     required super.backdropPath,
     required super.overview,
@@ -16,8 +16,8 @@ class MvoieDetailsModel extends MovieDetails {
     required super.genres,
   });
 
-  factory MvoieDetailsModel.fromJson(Map<String, dynamic> json) {
-    return MvoieDetailsModel(
+  factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
+    return MovieDetailsModel(
       
       id: json['id'],
       backdropPath: json['backdrop_path'],
