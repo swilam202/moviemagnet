@@ -1,14 +1,19 @@
-import 'package:moviemagnet/movies/domain/entites/movie%20details.dart';
+import '../../../domain/entites/movie details.dart';
 
-abstract class MovieDetailsState{}
+abstract class MovieDetailsState {}
 
-class MovieDetailsInitialState extends MovieDetailsState{}
-class MovieDetailsLoadingState extends MovieDetailsState{}
-class MovieDetailsFailureState extends MovieDetailsState{
+class MovieDetailsInitialState extends MovieDetailsState {}
+
+class MovieDetailsLoadingState extends MovieDetailsState {}
+
+class MovieDetailsFailureState extends MovieDetailsState {
   String errorMessage;
+
   MovieDetailsFailureState({required this.errorMessage});
 }
-class MovieDetailsSuccessState extends MovieDetailsState{
+
+class MovieDetailsSuccessState extends MovieDetailsState {
   MovieDetails movie;
+
   MovieDetailsSuccessState({required this.movie});
 }

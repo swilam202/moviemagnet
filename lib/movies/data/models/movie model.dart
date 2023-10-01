@@ -1,7 +1,7 @@
-import 'package:moviemagnet/movies/domain/entites/movie.dart';
+import '../../domain/entites/movie.dart';
 
 class MovieModel extends Movie {
-  MovieModel({
+  const MovieModel({
     required super.id,
     required super.backdropPath,
     required super.overview,

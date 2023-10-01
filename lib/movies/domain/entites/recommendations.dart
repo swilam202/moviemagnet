@@ -1,8 +1,8 @@
 class MovieRecommendations {
-  int id;
-  String? image;
+  final int id;
+  final String? image;
 
-  MovieRecommendations({
+  const MovieRecommendations({
     required this.id,
     required this.image,
   });

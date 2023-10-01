@@ -7,17 +7,24 @@ import 'package:moviemagnet/movies/data/models/movie%20details%20model.dart';
 import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 import 'package:moviemagnet/movies/data/models/movie%20recommedations%20model.dart';
 
-abstract class BaseMovieReomteDataSource {
+abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
+
   Future<List<MovieModel>> getPopularMovies();
+
   Future<List<MovieModel>> getTopRatedMovies();
+
   Future<List<MovieModel>> getUpComingMovies();
+
   Future<MovieDetailsModel> getMovieDetails(String movieId);
-  Future<List<MovieRecommendationsModel>> getMovieRecommendations(String movieId);
+
+  Future<List<MovieRecommendationsModel>> getMovieRecommendations(
+      String movieId);
 }
 
-class MovieReomteDataSource extends BaseMovieReomteDataSource {
+class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   Dio dio = Dio();
+
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     Response response = await dio.get(APIConstants.nowPlayingMoviesLink);
@@ -36,8 +43,11 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
     Response response = await dio.get(APIConstants.popularMoviesLink);
 
     if (response.statusCode == 200) {
-      List<MovieModel> movies = List.from((response.data['results'] as List)
-          .map((e) => MovieModel.fromJson(e)));
+      List<MovieModel> movies = List.from(
+        (response.data['results'] as List).map(
+          (e) => MovieModel.fromJson(e),
+        ),
+      );
       return movies;
     } else {
       throw ServerException(response.data);
@@ -49,8 +59,11 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
     Response response = await dio.get(APIConstants.topRatedMoviesLink);
     print(response.data);
     if (response.statusCode == 200) {
-      List<MovieModel> movies = List.from((response.data['results'] as List)
-          .map((e) => MovieModel.fromJson(e)));
+      List<MovieModel> movies = List.from(
+        (response.data['results'] as List).map(
+          (e) => MovieModel.fromJson(e),
+        ),
+      );
       return movies;
     } else {
       throw ServerException(response.data);
@@ -62,34 +75,39 @@ class MovieReomteDataSource extends BaseMovieReomteDataSource {
     Response response = await dio.get(APIConstants.upComingMoviesLink);
 
     if (response.statusCode == 200) {
-      List<MovieModel> movies =
-          List.from((response.data['results'] as List).map((e) => MovieModel.fromJson(e)));
+      List<MovieModel> movies = List.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
       return movies;
     } else {
       throw ServerException(response.data);
     }
   }
-  
+
   @override
-  Future<MovieDetailsModel> getMovieDetails( String movieId) async{
-    Response response = await dio.get(APIConstants.getMovieDetailsLink(movieId));
+  Future<MovieDetailsModel> getMovieDetails(String movieId) async {
+    Response response =
+        await dio.get(APIConstants.getMovieDetailsLink(movieId));
     MovieDetailsModel movie = MovieDetailsModel.fromJson(response.data);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       return movie;
-    }
-    else{
+    } else {
       throw ServerException(response.data);
     }
   }
-  
+
   @override
-  Future<List<MovieRecommendationsModel>> getMovieRecommendations(String movieId) async{
-   Response response = await dio.get(APIConstants.getRecommendationsLink(movieId));
-   List<MovieRecommendationsModel> movies = List.from((response.data['results'] as List).map((e) => MovieRecommendationsModel.fromJson(e)));
-    if(response.statusCode == 200){
+  Future<List<MovieRecommendationsModel>> getMovieRecommendations(
+      String movieId) async {
+    Response response =
+        await dio.get(APIConstants.getRecommendationsLink(movieId));
+    List<MovieRecommendationsModel> movies = List.from(
+      (response.data['results'] as List).map(
+        (e) => MovieRecommendationsModel.fromJson(e),
+      ),
+    );
+    if (response.statusCode == 200) {
       return movies;
-    }
-    else{
+    } else {
       throw ServerException(response.data);
     }
   }

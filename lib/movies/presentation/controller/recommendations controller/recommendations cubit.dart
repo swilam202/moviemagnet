@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviemagnet/movies/domain/entites/recommendations.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20movie%20recommendatios.dart';
-import 'package:moviemagnet/movies/presentation/controller/recommendations%20controller/recommendations%20state.dart';
 
 import '../../../../core/error/failures.dart';
+import '../../../domain/entites/recommendations.dart';
+import '../../../domain/usecases/get movie recommendatios usecase.dart';
+import 'recommendations state.dart';
 
 class RecommendationsCubit extends Cubit<RecommendationsState> {
   GetMovieRecommendationsUseCase getMovieRecommendations;
@@ -15,10 +15,10 @@ class RecommendationsCubit extends Cubit<RecommendationsState> {
 
   getMovies(String movieId) async {
     emit(RecommendationsLoadingState());
-    Either<Failure, List<MovieRecommendations>> nowPlaying =
-        await getMovieRecommendations.excute(movieId);
+    Either<Failure, List<MovieRecommendations>> recommendations =
+        await getMovieRecommendations.execute(movieId);
 
-    nowPlaying.fold((l) {
+    recommendations.fold((l) {
       emit(RecommendationsFailureState(errorMessage: l.message));
     }, (r) {
       emit(RecommendationsSuccessState(movies: r));

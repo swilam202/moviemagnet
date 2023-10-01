@@ -1,7 +1,7 @@
-import 'package:moviemagnet/movies/domain/entites/recommendations.dart';
+import '../../domain/entites/recommendations.dart';
 
 class MovieRecommendationsModel extends MovieRecommendations {
-  MovieRecommendationsModel({
+  const MovieRecommendationsModel({
     required super.id,
     required super.image,
   });

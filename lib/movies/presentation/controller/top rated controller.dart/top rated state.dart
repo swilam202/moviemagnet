@@ -1,4 +1,3 @@
-import '../../../data/models/movie model.dart';
 import '../../../domain/entites/movie.dart';
 
 abstract class TopRatedState {}

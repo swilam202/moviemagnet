@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20popular%20movies%20usecase.dart';
-import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20state.dart';
 
 import '../../../../core/error/failures.dart';
-import '../../../data/models/movie model.dart';
 import '../../../domain/entites/movie.dart';
+import '../../../domain/usecases/get popular movies usecase.dart';
+import 'popular state.dart';
 
 class PopularCubit extends Cubit<PopularState> {
   PopularCubit(this.popularMoviesUseCase) : super(PopularInitialState());
@@ -13,10 +12,9 @@ class PopularCubit extends Cubit<PopularState> {
 
   getMovies() async {
     emit(PopularLoadingState());
-    Either<Failure, List<Movie>> nowPlaying =
-        await popularMoviesUseCase.excute();
+    Either<Failure, List<Movie>> popular = await popularMoviesUseCase.execute();
 
-    nowPlaying.fold((l) {
+    popular.fold((l) {
       emit(PopularFailureState(errorMessage: l.message));
     }, (r) {
       emit(PopularSuccessState(movies: r));

@@ -9,7 +9,7 @@ class MovieDetailsBottomSectionShimmer extends StatelessWidget {
     return SizedBox(
       height: 500,
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           childAspectRatio: 6 / 8,
           maxCrossAxisExtent: 150,
           crossAxisSpacing: 20,

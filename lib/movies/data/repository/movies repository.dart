@@ -1,20 +1,22 @@
 import 'package:dartz/dartz.dart';
-import 'package:moviemagnet/core/error/exceptions.dart';
-import 'package:moviemagnet/core/error/failures.dart';
-import 'package:moviemagnet/movies/data/data%20source/movie%20remote%20data%20source.dart';
-import 'package:moviemagnet/movies/data/models/movie%20model.dart';
-import 'package:moviemagnet/movies/domain/entites/movie%20details.dart';
-import 'package:moviemagnet/movies/domain/entites/recommendations.dart';
-import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.dart';
+
+import '../../../core/error/exceptions.dart';
+import '../../../core/error/failures.dart';
+import '../../domain/entites/movie details.dart';
+import '../../domain/entites/recommendations.dart';
+import '../../domain/repository/base movie repository.dart';
+import '../data source/movie remote data source.dart';
+import '../models/movie model.dart';
 
 class MovieRepository extends BaseMovieRepository {
-  BaseMovieReomteDataSource baseMovieReomteDataSource;
-  MovieRepository(this.baseMovieReomteDataSource);
+  BaseMovieRemoteDataSource baseMovieRemoteDataSource;
+
+  MovieRepository(this.baseMovieRemoteDataSource);
 
   @override
   Future<Either<Failure, List<MovieModel>>> getNowPlayingMovies() async {
     List<MovieModel> result =
-        await baseMovieReomteDataSource.getNowPlayingMovies();
+        await baseMovieRemoteDataSource.getNowPlayingMovies();
     try {
       return Right(result);
     } on ServerException catch (error) {
@@ -25,7 +27,7 @@ class MovieRepository extends BaseMovieRepository {
   @override
   Future<Either<Failure, List<MovieModel>>> getPopularMovies() async {
     List<MovieModel> result =
-        await baseMovieReomteDataSource.getPopularMovies();
+        await baseMovieRemoteDataSource.getPopularMovies();
     try {
       return Right(result);
     } on ServerException catch (error) {
@@ -36,7 +38,7 @@ class MovieRepository extends BaseMovieRepository {
   @override
   Future<Either<Failure, List<MovieModel>>> getTopRatedMovies() async {
     List<MovieModel> result =
-        await baseMovieReomteDataSource.getTopRatedMovies();
+        await baseMovieRemoteDataSource.getTopRatedMovies();
     try {
       return Right(result);
     } on ServerException catch (error) {
@@ -46,10 +48,10 @@ class MovieRepository extends BaseMovieRepository {
 
   @override
   Future<Either<Failure, List<MovieModel>>> getUpComingMovies() async {
-    List<MovieModel> reslut =
-        await baseMovieReomteDataSource.getUpComingMovies();
+    List<MovieModel> result =
+        await baseMovieRemoteDataSource.getUpComingMovies();
     try {
-      return Right(reslut);
+      return Right(result);
     } on ServerException catch (error) {
       return Left(ServerFailure(error.errorModel.statusMessage));
     }
@@ -57,9 +59,9 @@ class MovieRepository extends BaseMovieRepository {
 
   @override
   Future<Either<Failure, MovieDetails>> getMovieDetails(String movieId) async {
-    final reslut = await baseMovieReomteDataSource.getMovieDetails(movieId);
+    final result = await baseMovieRemoteDataSource.getMovieDetails(movieId);
     try {
-      return Right(reslut);
+      return Right(result);
     } on ServerException catch (error) {
       return Left(ServerFailure(error.errorModel.statusMessage));
     }
@@ -69,7 +71,7 @@ class MovieRepository extends BaseMovieRepository {
   Future<Either<Failure, List<MovieRecommendations>>> getMovieRecommendations(
       String movieId) async {
     final result =
-        await baseMovieReomteDataSource.getMovieRecommendations(movieId);
+        await baseMovieRemoteDataSource.getMovieRecommendations(movieId);
     try {
       return Right(result);
     } on ServerException catch (error) {

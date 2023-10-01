@@ -30,9 +30,14 @@ class TopRatedSection extends StatelessWidget {
                   ),
                   TextButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              MovieListPage(movies: state.movies,title: 'Top Rated',)));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MovieListPage(
+                            movies: state.movies,
+                            title: 'Top Rated',
+                          ),
+                        ),
+                      );
                     },
                     icon: Text(
                       'See more',

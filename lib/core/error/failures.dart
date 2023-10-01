@@ -1,6 +1,7 @@
 abstract class Failure {
   final String message;
-  Failure(this.message);
+
+  const Failure(this.message);
 
   @override
   bool operator ==(Object other) =>
@@ -11,9 +12,9 @@ abstract class Failure {
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.message);
+  const ServerFailure(super.message);
 }
 
 class LocalFailure extends Failure {
-  LocalFailure(super.message);
+  const LocalFailure(super.message);
 }

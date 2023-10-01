@@ -1,4 +1,4 @@
-import 'package:moviemagnet/movies/domain/entites/recommendations.dart';
+import '../../../domain/entites/recommendations.dart';
 
 abstract class RecommendationsState {}
 
@@ -8,6 +8,7 @@ class RecommendationsLoadingState extends RecommendationsState {}
 
 class RecommendationsFailureState extends RecommendationsState {
   final String errorMessage;
+
   RecommendationsFailureState({required this.errorMessage});
 }
 

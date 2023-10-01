@@ -11,78 +11,66 @@ class MovieDetailsTopSectionShimmer extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.3,
           child: Shimmer.fromColors(
-                  baseColor: Colors.grey[850]!,
-                  highlightColor: Colors.grey[800]!,
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                ),
-        ),
-
-
-                  
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[850]!,
-                  highlightColor: Colors.grey[800]!,
-                  child: Container(
-                    height: 20,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      
-                    ),
-                  
-                ),
-                ),
-
-          Row(
-            children: [
-Shimmer.fromColors(
-                  baseColor: Colors.grey[850]!,
-                  highlightColor: Colors.grey[800]!,
-                  child: Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      
-                    ),
-                  
-                ),
-                ),
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[850]!,
-                  highlightColor: Colors.grey[800]!,
-                  child: Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      
-                    ),
-                  
-                ),
-                ),
-            ],
+            baseColor: Colors.grey[850]!,
+            highlightColor: Colors.grey[800]!,
+            child: Container(
+              margin: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
           ),
-          SizedBox(height: 20),
-          Shimmer.fromColors(
-                  baseColor: Colors.grey[850]!,
-                  highlightColor: Colors.grey[800]!,
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      
-                    ),
-                  
+        ),
+        Shimmer.fromColors(
+          baseColor: Colors.grey[850]!,
+          highlightColor: Colors.grey[800]!,
+          child: Container(
+            height: 20,
+            width: 50,
+            decoration: const BoxDecoration(
+              color: Colors.black,
+            ),
+          ),
+        ),
+        Row(
+          children: [
+            Shimmer.fromColors(
+              baseColor: Colors.grey[850]!,
+              highlightColor: Colors.grey[800]!,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: const BoxDecoration(
+                  color: Colors.black,
                 ),
+              ),
+            ),
+            Shimmer.fromColors(
+              baseColor: Colors.grey[850]!,
+              highlightColor: Colors.grey[800]!,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: const BoxDecoration(
+                  color: Colors.black,
                 ),
-  SizedBox(height: 20),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Shimmer.fromColors(
+          baseColor: Colors.grey[850]!,
+          highlightColor: Colors.grey[800]!,
+          child: Container(
+            height: 100,
+            decoration: const BoxDecoration(
+              color: Colors.black,
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
       ],
     );
   }

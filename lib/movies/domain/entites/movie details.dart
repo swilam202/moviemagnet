@@ -1,5 +1,4 @@
-import 'package:moviemagnet/movies/domain/entites/generes.dart';
-import 'package:moviemagnet/movies/domain/entites/production%20companies.dart';
+import 'genres.dart';
 
 class MovieDetails {
   final int id;
@@ -9,22 +8,18 @@ class MovieDetails {
   final String overview;
   final String releaseDate;
   final num runtime;
-  final List<Generes> genres;
- // final List<ProductionCompaines> productionCompaines;
+  final List<Genres> genres;
 
   const MovieDetails({
     required this.genres,
     required this.id,
     required this.backdropPath,
     required this.overview,
-   // required this.productionCompaines,
     required this.releaseDate,
     required this.runtime,
     required this.title,
     required this.voteAverage,
   });
-
-
 
   @override
   bool operator ==(Object other) =>

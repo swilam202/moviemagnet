@@ -1,52 +1,41 @@
-
 import 'package:get_it/get_it.dart';
-import 'package:moviemagnet/movies/data/data%20source/movie%20remote%20data%20source.dart';
-import 'package:moviemagnet/movies/data/repository/movies%20repository.dart';
-import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20movie%20recommendatios.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20now%20playing%20movies%20usecase.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20popular%20movies%20usecase.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20top%20rated%20movies.dart';
-import 'package:moviemagnet/movies/domain/usecases/get%20upcoming%20movies%20usecase.dart';
-import 'package:moviemagnet/movies/presentation/controller/movie%20details%20controller/movie%20details%20cubit.dart';
-import 'package:moviemagnet/movies/presentation/controller/popular%20controller/popular%20cubit.dart';
-import 'package:moviemagnet/movies/presentation/controller/recommendations%20controller/recommendations%20cubit.dart';
-import 'package:moviemagnet/movies/presentation/controller/top%20rated%20controller.dart/top%20rated%20cubit.dart';
-import 'package:moviemagnet/movies/presentation/controller/up%20coming%20controller/up%20coming%20cubit.dart';
 
-import '../../movies/domain/usecases/get movie detils usecase.dart';
+import '../../movies/data/data source/movie remote data source.dart';
+import '../../movies/data/repository/movies repository.dart';
+import '../../movies/domain/repository/base movie repository.dart';
+import '../../movies/domain/usecases/get movie details usecase.dart';
+import '../../movies/domain/usecases/get movie recommendatios usecase.dart';
+import '../../movies/domain/usecases/get now playing movies usecase.dart';
+import '../../movies/domain/usecases/get popular movies usecase.dart';
+import '../../movies/domain/usecases/get top rated movies usecase.dart';
+import '../../movies/domain/usecases/get upcoming movies usecase.dart';
+import '../../movies/presentation/controller/movie details controller/movie details cubit.dart';
 import '../../movies/presentation/controller/now playing controller/now playing cubit.dart';
-
+import '../../movies/presentation/controller/popular controller/popular cubit.dart';
+import '../../movies/presentation/controller/recommendations controller/recommendations cubit.dart';
+import '../../movies/presentation/controller/top rated controller.dart/top rated cubit.dart';
+import '../../movies/presentation/controller/up coming controller/up coming cubit.dart';
 
 final sl = GetIt.instance;
 
-class ServiceLacator{
-  
-void setup(){ 
-  
-  
+class ServiceLocator {
+  void setup() {
+    sl.registerLazySingleton<BaseMovieRemoteDataSource>(
+        () => MovieRemoteDataSource());
+    sl.registerLazySingleton<BaseMovieRepository>(() => MovieRepository(sl()));
 
-
-  sl.registerLazySingleton<BaseMovieReomteDataSource>(() => MovieReomteDataSource());
-  sl.registerLazySingleton<BaseMovieRepository>(() => MovieRepository(sl()));
-
-
-  sl.registerLazySingleton(() => GetNowPlayingMoviesUseCase(sl()));
-  sl.registerLazySingleton(() => GetPopularMoviesUseCase(sl()));
-  sl.registerLazySingleton(() => GetTopRatedMoviesUseCase(sl()));
-  sl.registerLazySingleton(() => GetUpComingMoviesUseCase(sl()));
-  sl.registerLazySingleton(() => GetMovieDetailsUseCase(sl()));
-  sl.registerLazySingleton(() => GetMovieRecommendationsUseCase(sl()));
+    sl.registerLazySingleton(() => GetNowPlayingMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetPopularMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetTopRatedMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetUpComingMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetMovieDetailsUseCase(sl()));
+    sl.registerLazySingleton(() => GetMovieRecommendationsUseCase(sl()));
 
     sl.registerFactory(() => NowPlayingCubit(sl())..getMovies());
-  sl.registerFactory(() => PopularCubit(sl())..getMovies());
-  sl.registerFactory(() => TopRatedCubit(sl())..getMovies());
-  sl.registerFactory(() => UpComingCubit(sl())..getMovies());
-  sl.registerFactory(() => MovieDetailsCubit(sl()));
-  sl.registerFactory(() => RecommendationsCubit(sl()));
-
-  
- 
-}
-
+    sl.registerFactory(() => PopularCubit(sl())..getMovies());
+    sl.registerFactory(() => TopRatedCubit(sl())..getMovies());
+    sl.registerFactory(() => UpComingCubit(sl())..getMovies());
+    sl.registerFactory(() => MovieDetailsCubit(sl()));
+    sl.registerFactory(() => RecommendationsCubit(sl()));
+  }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviemagnet/movies/data/models/movie%20model.dart';
 
 import '../../../core/network/api constants.dart';
 import '../../domain/entites/movie.dart';
@@ -10,6 +9,7 @@ class MovieListPage extends StatelessWidget {
 
   final String title;
   final List<Movie> movies;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +19,13 @@ class MovieListPage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: movies.length,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemBuilder: ((context, index) {
           return Container(
             margin: const EdgeInsets.all(5),
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 53, 53, 53),
+              color: const Color.fromARGB(255, 53, 53, 53),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Row(
@@ -43,7 +43,7 @@ class MovieListPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,15 +54,13 @@ class MovieListPage extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(
-                        height: 15
-                      ),
+                      const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
                             color: Colors.red,
-                            padding: EdgeInsets.all(3),
+                            padding: const EdgeInsets.all(3),
                             child: Text(
                               movies[index].releaseDate.split('-')[0],
                               style: GoogleFonts.lato(
@@ -72,21 +70,19 @@ class MovieListPage extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              SizedBox(width: 15),
-                              Icon(
+                              const SizedBox(width: 15),
+                              const Icon(
                                 Icons.star,
                                 color: Colors.amber,
                                 size: 16,
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(movies[index].voteAverage.toString()),
                             ],
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 15
-                      ),
+                      const SizedBox(height: 15),
                       Text(
                         movies[index].overview,
                         style: GoogleFonts.lato(fontSize: 16),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviemagnet/movies/presentation/pages/movies%20list%20page.dart';
 
 import '../controller/popular controller/popular cubit.dart';
 import '../controller/popular controller/popular state.dart';
-import 'bottom sheet.dart';
+import '../pages/movies list page.dart';
 import 'home page list view shimmer.dart';
 import 'home page list view.dart';
 
@@ -31,7 +30,14 @@ class PopularSection extends StatelessWidget {
                   ),
                   TextButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> MovieListPage(movies: state.movies,title: 'Popular',)));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MovieListPage(
+                            movies: state.movies,
+                            title: 'Popular',
+                          ),
+                        ),
+                      );
                     },
                     icon: Text(
                       'See more',
@@ -61,8 +67,7 @@ class PopularSection extends StatelessWidget {
             child: Text(state.errorMessage),
           );
         } else {
-          return //Center(child: CircularProgressIndicator(),);
-              const HomePageListViewShimmer();
+          return const HomePageListViewShimmer();
         }
       },
     );

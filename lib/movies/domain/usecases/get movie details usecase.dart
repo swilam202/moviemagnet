@@ -1,14 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:moviemagnet/movies/domain/entites/movie%20details.dart';
-import 'package:moviemagnet/movies/domain/repository/base%20movie%20repository.dart';
 
 import '../../../core/error/failures.dart';
+import '../entites/movie details.dart';
+import '../repository/base movie repository.dart';
 
 class GetMovieDetailsUseCase {
   BaseMovieRepository baseMovieRepository;
 
   GetMovieDetailsUseCase(this.baseMovieRepository);
-  Future<Either<Failure, MovieDetails>> excute(String movieId) async {
+
+  Future<Either<Failure, MovieDetails>> execute(String movieId) async {
     return await baseMovieRepository.getMovieDetails(movieId);
   }
 }

@@ -1,10 +1,9 @@
-import '../../domain/entites/generes.dart';
+import '../../domain/entites/genres.dart';
 
-class GeneresModel extends Generes{
-  GeneresModel({required super.name});
+class GenresModel extends Genres {
+  GenresModel({required super.name});
 
- factory GeneresModel.fromJson(Map<String,dynamic> json){
-  return GeneresModel(name: json['name']);
- }
-
+  factory GenresModel.fromJson(Map<String, dynamic> json) {
+    return GenresModel(name: json['name']);
+  }
 }

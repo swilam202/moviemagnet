@@ -1,6 +1,4 @@
-import 'package:moviemagnet/movies/domain/entites/movie.dart';
-
-import '../../../data/models/movie model.dart';
+import '../../../domain/entites/movie.dart';
 
 abstract class NowPlayingState {}
 
@@ -10,6 +8,7 @@ class NowPlayingLoadingState extends NowPlayingState {}
 
 class NowPlayingFailureState extends NowPlayingState {
   final String errorMessage;
+
   NowPlayingFailureState({required this.errorMessage});
 }
 
@@ -18,6 +17,5 @@ class NowPlayingSuccessState extends NowPlayingState {
 
   NowPlayingSuccessState({
     required this.movies,
-
   });
 }

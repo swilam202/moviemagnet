@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../controller/top rated controller.dart/top rated cubit.dart';
-import '../controller/top rated controller.dart/top rated state.dart';
 import '../controller/up coming controller/up coming cubit.dart';
 import '../controller/up coming controller/up coming state.dart';
 import '../pages/movies list page.dart';
@@ -32,9 +30,14 @@ class UpComingSection extends StatelessWidget {
                   ),
                   TextButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              MovieListPage(movies: state.movies,title: 'Up Coming',),),);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MovieListPage(
+                            movies: state.movies,
+                            title: 'Up Coming',
+                          ),
+                        ),
+                      );
                     },
                     icon: Text(
                       'See more',
@@ -64,8 +67,7 @@ class UpComingSection extends StatelessWidget {
             child: Text(state.errorMessage),
           );
         } else {
-          return //Center(child: CircularProgressIndicator(),);
-              const HomePageListViewShimmer();
+          return const HomePageListViewShimmer();
         }
       },
     );

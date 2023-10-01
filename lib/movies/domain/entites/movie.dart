@@ -9,7 +9,6 @@ class Movie {
   const Movie({
     required this.id,
     required this.backdropPath,
-
     required this.overview,
     required this.title,
     required this.voteAverage,
@@ -23,7 +22,6 @@ class Movie {
           id == other.id &&
           title == other.title &&
           voteAverage == other.voteAverage &&
-
           backdropPath == other.backdropPath &&
           releaseDate == other.releaseDate &&
           overview == other.overview;
@@ -33,7 +31,6 @@ class Movie {
       id.hashCode ^
       title.hashCode ^
       voteAverage.hashCode ^
-
       backdropPath.hashCode ^
       releaseDate.hashCode ^
       overview.hashCode;

@@ -2,12 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:moviemagnet/core/network/api%20constants.dart';
-import 'package:moviemagnet/movies/data/models/movie%20model.dart';
-import 'package:moviemagnet/movies/presentation/widgets/now%20playing%20list%20view%20item.dart';
 
 import '../controller/now playing controller/now playing cubit.dart';
 import '../controller/now playing controller/now playing state.dart';
+import 'now playing list view item.dart';
 import 'now playing shimmer.dart';
 
 class NowPlayingSection extends StatelessWidget {
